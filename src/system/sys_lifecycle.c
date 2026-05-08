@@ -200,7 +200,7 @@ static void state_sleep_enter(void)
     
     while (bsp_gpio_read(BSP_GPIO_USER_BTN) == BSP_GPIO_HIGH)
     {
-        for (volatile uint32_t i = 0; i < 1000; i++);
+        bsp_mcu_delay_busy_ms(SYS_SLEEP_YIELD_DELAY_MS);
     }
 
     bsp_mcu_delay_busy_ms(SYS_SLEEP_SETTLE_DELAY_MS);
