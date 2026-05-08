@@ -1,0 +1,49 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "STM32 RTOS Debug (OpenOCD)",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceRoot}/build/src/NUCLEO_F746ZG_Startup.elf",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "openocd",
+            "device": "STM32F746ZG",
+            "interface": "swd",
+            "runToEntryPoint": "main",
+            "toolchainPrefix": "arm-none-eabi",
+            "armToolchainPath": "${workspaceRoot}/toolchain/arm-gnu-toolchain/bin",
+            "serverpath": "${workspaceRoot}/toolchain/openocd/bin/openocd.exe",
+            "configFiles": [
+                "board/st_nucleo_f7.cfg"
+            ],
+            "searchDir": [
+                "${workspaceRoot}/toolchain/openocd/openocd/scripts"
+            ],
+            "preLaunchTask": "Build Project (RTOS Debug)",
+            "svdFile": "${workspaceRoot}/toolchain/STM32F746.svd"
+        },
+        {
+            "name": "STM32 Bare-metal Debug (OpenOCD)",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceRoot}/build/src/NUCLEO_F746ZG_Startup.elf",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "openocd",
+            "device": "STM32F746ZG",
+            "interface": "swd",
+            "runToEntryPoint": "main",
+            "toolchainPrefix": "arm-none-eabi",
+            "armToolchainPath": "${workspaceRoot}/toolchain/arm-gnu-toolchain/bin",
+            "serverpath": "${workspaceRoot}/toolchain/openocd/bin/openocd.exe",
+            "configFiles": [
+                "board/st_nucleo_f7.cfg"
+            ],
+            "searchDir": [
+                "${workspaceRoot}/toolchain/openocd/openocd/scripts"
+            ],
+            "preLaunchTask": "Build Project (Bare-metal Debug)",
+            "svdFile": "${workspaceRoot}/toolchain/STM32F746.svd"
+        }
+    ]
+}

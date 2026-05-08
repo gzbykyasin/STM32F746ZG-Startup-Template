@@ -1,0 +1,9 @@
+{
+    "editor.formatOnSave": false,
+    "editor.formatOnPaste": false,
+    "editor.formatOnType": false,
+    "C_Cpp.clang_format_style": "file",
+    "C_Cpp.dimInactiveRegions": false,
+    "C_Cpp.inactiveRegionOpacity": 1.0
+}
+

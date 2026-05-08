@@ -1,0 +1,32 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Build Project (RTOS Debug)",
+			"type": "shell",
+			"command": "cmake -G Ninja -B build -DCMAKE_BUILD_TYPE=Debug -DSYS_USE_RTOS=ON -DBUILD_ENV=production; cmake --build build",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"problemMatcher": "$gcc",
+			"detail": "Configures and compiles the project in FLASH for Debug mode with RTOS."
+		},
+		{
+			"label": "Build Project (Bare-metal Debug)",
+			"type": "shell",
+			"command": "cmake -G Ninja -B build -DCMAKE_BUILD_TYPE=Debug -DSYS_USE_RTOS=OFF -DBUILD_ENV=production; cmake --build build",
+			"group": {
+				"kind": "build"
+			},
+			"problemMatcher": "$gcc",
+			"detail": "Configures and compiles the project in FLASH for Debug mode without RTOS."
+		},
+		{
+			"label": "Clean Build Directory",
+			"type": "shell",
+			"command": "powershell -Command \"if (Test-Path build) { Remove-Item -Recurse -Force build }; New-Item -ItemType Directory -Path build\"",
+			"problemMatcher": []
+		}
+	]
+}

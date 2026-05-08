@@ -1,0 +1,77 @@
+---
+# Ceedling configuration for NUCLEO_F746ZG_Startup project
+# https://github.com/ThrowTheSwitch/Ceedling
+
+:project:
+  :use_exceptions: FALSE
+  :use_test_preprocessor: TRUE
+  :use_auxiliary_dependencies: TRUE
+  :build_root: ../build/ceedling
+  :release_build: TRUE
+  :test_file_prefix: test_
+  :which_ceedling: gem
+  :ceedling_version: 0.31.1
+  :default_tasks:
+    - test:all
+
+:environment:
+
+:extension:
+  :executable: .out
+
+:paths:
+  :test:
+    - +:**
+    - -:mocks
+  :source:
+    - ../src/**
+  :support:
+    - support
+  :include:
+    - ../src/api
+    - ../src/app
+    - ../src/bsp
+    - ../src/driver
+    - ../src/system
+    - ../src/target
+    - ../src/util
+    - ../third_party/CMSIS_Core/CMSIS/Core/Include
+    - ../third_party/CMSIS_Core/CMSIS/RTOS2/Include
+    - ../third_party/CMSIS_FreeRTOS/CMSIS/RTOS2/FreeRTOS/Include
+    - ../third_party/CMSIS_Device/Include
+    - ../third_party/STM32F7xx_HAL_Driver/Inc
+    - ../third_party/FreeRTOS/include
+    - ../third_party/FreeRTOS/portable/GCC/ARM_CM7/r0p1
+    - ../third_party/FatFs/source
+
+:defines:
+  :common: &common_defines
+    - USE_HAL_DRIVER
+    - STM32F746xx
+  :test:
+    - *common_defines
+    - TEST
+  :test_preprocess:
+    - *common_defines
+    - TEST
+
+:cmock:
+  :mock_prefix: mock_
+  :when_no_prototypes: :warn
+  :enforce_strict_ordering: TRUE
+  :plugins:
+    - :ignore
+    - :callback
+  :treat_as:
+    uint8: HEX8
+    uint16: HEX16
+    uint32: UINT32
+    int8: INT8
+    bool: UINT8
+
+:gcov:
+  :reports:
+    - HtmlDetailed
+  :gcovr:
+    :html_medium_threshold: 75
+    :html_high_threshold: 90
