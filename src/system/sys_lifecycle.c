@@ -26,12 +26,16 @@
 
 /** @brief Button debounce filter time in ms. */
 #define SYS_BTN_FILTER_MS             500U
+
 /** @brief Timeout for button release during sleep transition. */
 #define SYS_SLEEP_RELEASE_TIMEOUT_MS  2000U
+
 /** @brief Delay for hardware stabilization before sleep. */
 #define SYS_SLEEP_SETTLE_DELAY_MS     50U
+
 /** @brief Short yield delay during polling. */
 #define SYS_SLEEP_YIELD_DELAY_MS      10U
+
 /** @brief User button interrupt priority. */
 #define SYS_BTN_IRQ_PRIORITY          6U
 
@@ -41,21 +45,28 @@
 
 /** @brief Handler for FSM INIT state entry. */
 static void state_init_enter(void);
+
 /** @brief Handler for FSM INIT state exit. */
 static void state_init_exit(void);
+
 /** @brief Handler for FSM RUNNING state entry. */
 static void state_running_enter(void);
+
 /** @brief Handler for FSM RUNNING state exit. */
 static void state_running_exit(void);
+
 /** @brief Handler for FSM SLEEP state entry. */
 static void state_sleep_enter(void);
+
 /** @brief Handler for FSM SLEEP state exit. */
 static void state_sleep_exit(void);
+
 /** @brief Handler for FSM FAULT state entry. */
 static void state_fault_enter(void);
 
 /** @brief Callback for user button interrupt events. */
 static void on_button_event(void *p_arg);
+
 /** @brief Callback for system hardware fault events. */
 static void on_hardware_fault(void *p_arg);
 
@@ -65,8 +76,10 @@ static void on_hardware_fault(void *p_arg);
 
 /** @brief Last tick value for button debounce. */
 static uint32_t s_btn_last_tick = 0U;
+
 /** @brief Main system lifecycle FSM instance. */
 static sys_fsm_t s_lifecycle_fsm;
+
 /** @brief Pending lifecycle event for deferred processing. */
 static volatile sys_event_t s_pending_event = SYS_EVT_NONE;
 

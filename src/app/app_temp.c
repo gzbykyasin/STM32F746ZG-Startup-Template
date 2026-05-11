@@ -13,8 +13,8 @@
 #include "api_ambient.h"
 #include "api_sync.h"
 
-#include "sys_logger.h"
-#include "api_app_manager.h"
+#include "api_log.h"
+#include "api_task.h"
 
 #include <stddef.h>
 
@@ -55,9 +55,9 @@ void app_temp_task(void *p_arg)
         if (api_ambient_read_temp(&ambient_data))
         {
             app_data.temperature_c = ambient_data.temperature_c;
-            app_data.timestamp = api_app_get_tick();
+            app_data.timestamp = api_task_get_tick();
 
-            SYS_LOG_INFO("APP_TEMP", "Temp: %ld (x1000), Vref: %ld (mV)", 
+            API_LOG_INFO("APP_TEMP", "Temp: %ld (x1000), Vref: %ld (mV)", 
                          (int32_t)(app_data.temperature_c * 1000.0f),
                          (int32_t)(ambient_data.vref_v * 1000.0f));
 
@@ -65,11 +65,11 @@ void app_temp_task(void *p_arg)
         }
         else
         {
-            SYS_LOG_ERROR("APP_TEMP", "Failed to read temperature from API");
+            API_LOG_ERROR("APP_TEMP", "Failed to read temperature from API");
         }
 
-        api_app_delay_ms(1000U);
-    } while (api_app_should_loop());
+        api_task_delay_ms(1000U);
+    } while (api_task_should_loop());
 }
 
 /** @brief */

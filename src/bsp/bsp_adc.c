@@ -23,6 +23,7 @@
 
 /** @brief Number of oversampling samples per ADC channel. */
 #define BSP_ADC_SAMPLES_PER_CH 5U 
+
 /** @brief Total size of the circular DMA buffer. */
 #define BSP_ADC_BUFFER_SIZE    (BSP_ADC_CH_MAX * BSP_ADC_SAMPLES_PER_CH)
 
@@ -49,6 +50,7 @@ static uint32_t s_adc_buffer[BSP_ADC_BUFFER_SIZE] = {0};
 
 /** @brief Initializes low-level ADC hardware (Clocks, DMA, Interrupts). */
 static bool adc_msp_init(ADC_HandleTypeDef *hadc);
+
 /** @brief DMA conversion complete interrupt service routine callback. */
 static void adc_dma_callback(void *p_arg);
 

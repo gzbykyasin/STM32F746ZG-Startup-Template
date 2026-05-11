@@ -14,8 +14,8 @@
 #include "api_ambient.h"
 #include "api_sync.h"
 
-#include "sys_logger.h"
-#include "api_app_manager.h"
+#include "api_log.h"
+#include "api_task.h"
 
 #include <stddef.h>
 
@@ -59,7 +59,7 @@ void app_led_task(void *p_arg)
             toggle = !toggle;
             api_ambient_set_led(API_AMBIENT_LED_BLUE, toggle);
         }
-    } while (api_app_should_loop());
+    } while (api_task_should_loop());
 }
 
 /* End of File: app_led.c */

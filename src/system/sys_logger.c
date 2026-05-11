@@ -25,12 +25,16 @@
 
 /** @brief Maximum length of the log message text. */
 #define LOG_MSG_TEXT_LEN      128U
+
 /** @brief Maximum length of the module identifier name. */
 #define LOG_MSG_MOD_LEN       12U
+
 /** @brief Size of the final output buffer for UART transmission. */
 #define LOG_OUT_BUF_LEN       256U
+
 /** @brief Capacity of the asynchronous log message queue. */
 #define LOG_QUEUE_SIZE        16U
+
 /** @brief Timeout for queue operations in milliseconds. */
 #define LOG_QUEUE_MAX_TIMEOUT 100U
 

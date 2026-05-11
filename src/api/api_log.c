@@ -1,30 +1,25 @@
 /**
- * @file    main.c
+ * @file    api_log.c
  * @author  Yasin GOZUBUYUK (gzbyk.yasinn@gmail.com)
- * @brief   Main application entry point — NUCLEO-F746ZG Startup.
- * @date    6 May 2026
+ * @brief   Logging API Implementation.
+ * @date    11 May 2026
  * @version 1.0.0
  */
 
 /*******************************************************************************
  * Includes
  ******************************************************************************/
- #include "app_system.h"
- 
- #include <stddef.h>
+#include "api_log.h"
+#include "sys_logger.h"
 
 /*******************************************************************************
- * Public Function Definitions
+ * Public Functions
  ******************************************************************************/
 
 /** @brief */
-int main(void)
+void api_log_task(void *p_arg)
 {
-    app_system_init();
-    
-    app_system_start();
-
-    return 0;
+    sys_logger_task(p_arg);
 }
 
-/* End of File: main.c */
+/* End of File: api_log.c */
